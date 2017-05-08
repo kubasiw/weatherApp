@@ -1,0 +1,20 @@
+{
+  "name": "init",
+  "description": "",
+  "main": "index.js",
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "font-awesome": "^4.7.0",
+    "jquery-ui": "^1.12.1",
+    "jquery": "^3.1.1"
+  }
+}
