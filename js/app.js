@@ -8,9 +8,25 @@ jQuery(document).ready(function(){
 
         }).done(function(data) {
             
-            var ip = data.ip;
+            var latitude = data.latitude;
+            var longitude = data.longitude;
             
-            console.log(ip);
+            console.log(latitude);
+            console.log(longitude);
+            
+            $.ajax({
+            type: 'GET',
+            url: 'http://api.wunderground.com/api/53e53b9fc73ee335/conditions/q/"+latitude+","+longitude+".json',
+            dataType: 'json'
+
+            }).done(function(data) {
+
+                var placeWeather = data.current_observation;
+                console.log(placeWeather);
+
+            }).fail(function(error) {
+                alert("error");
+            });
             
         }).fail(function(error) {
             alert("error");
