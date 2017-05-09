@@ -16,13 +16,25 @@ jQuery(document).ready(function(){
             
             $.ajax({
             type: 'GET',
-            url: 'http://api.wunderground.com/api/53e53b9fc73ee335/conditions/q/"+latitude+","+longitude+".json',
-            dataType: 'json'
+            url: 'http://api.openweathermap.org/data/2.5/weather?lat='+latitude +'&lon='+longitude +'&units=metric&APPID=40422780428bbcebba3ef9843cd2666a&lang=pl',
+            dataType: 'json',
 
             }).done(function(data) {
-
-                var placeWeather = data.current_observation;
-                console.log(placeWeather);
+                
+                console.log(data);
+                
+                var place = data.name;
+                var temp = data.main.temp;
+                var pressure = data.main.pressure;
+                var humidity = data.main.humidity;
+                
+                console.log(place);
+                console.log(temp);
+                console.log(pressure);
+                console.log(humidity);
+                
+                
+                
 
             }).fail(function(error) {
                 alert("error");
