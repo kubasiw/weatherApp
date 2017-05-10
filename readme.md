@@ -1,6 +1,8 @@
-/// Currency App///
+/// Weather App///
 
-Its in progress but you could watch how it looks and works on: https://kubasiw.github.io/Currency-App/
+Its in progress.
+
+At the end it will display a lot of weather information espaciali in place that you open the app.
 
 enjoy and wait for final project
 
