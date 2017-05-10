@@ -1,6 +1,8 @@
 jQuery(document).ready(function(){
     
-
+    
+    
+    
         $.ajax({
             type: 'GET',
             url: '//freegeoip.net/json/?callback=',
@@ -13,6 +15,7 @@ jQuery(document).ready(function(){
             
             console.log(latitude);
             console.log(longitude);
+            
             
             $.ajax({
             type: 'GET',
@@ -28,14 +31,23 @@ jQuery(document).ready(function(){
                 var pressure = data.main.pressure;
                 var humidity = data.main.humidity;
                 
-                console.log(place);
-                console.log(temp);
-                console.log(pressure);
-                console.log(humidity);
+                var descript = data.weather[0].description;
+                var icon = data.weather[0].icon;
+                
+                var div1 = jQuery('section .row div:nth-child(1)');
+                var div2 = jQuery('section .row div:nth-child(2)');
+                var div3 = jQuery('section .row div:nth-child(3)');
+                var div4 = jQuery('section .row div:nth-child(4)');
+                
+                console.log(descript);
                 
                 
-                
+                div1.prepend('<div>' + '<img id="icon" src="http://openweathermap.org/img/w/'+icon+'.png" />' + '</div>'
+                            + '<div>' +descript+  '</div>');
 
+                jQuery('section > .row > div:nth-child(1)').addClass('d-flex flex-column align-items-center');
+                jQuery('section > .row > div:nth-child(1) > div:nth-child(2)').addClass('text-center');
+                
             }).fail(function(error) {
                 alert("error");
             });
