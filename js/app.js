@@ -84,7 +84,7 @@ jQuery(document).ready(function(){
                 sunset();
 
                 function header() {
-                    head.prepend('<div>' + 'Current weather in ' + ' ' + '<span>' +place+ '</span>' + ', ' + '<span>' +country+ '</span>' + ' ' + '<span>' + '<img id="flag" src="http://openweathermap.org/images/flags/'+countryS+'.png" />' + '</span>' + '</div>');
+                    head.prepend('<div>' + 'Weather in ' + ' ' + '<span>' +place+ '</span>' + ', ' + '<span>' +country+ '</span>' + ' ' + '<span>' + '<img id="flag" src="http://openweathermap.org/images/flags/'+countryS+'.png" />' + '</span>' + '</div>');
                 };
                 header();
                 
@@ -108,6 +108,7 @@ jQuery(document).ready(function(){
                           .css('margin-left', '1em');
                     
                     jQuery('.current tr:nth-child(1) > td:nth-child(1)').attr("colspan", 2);
+                    jQuery('.today').before('<h1>' + 'Today weather' +'</h1>');
                     
                     
                 
@@ -144,6 +145,7 @@ jQuery(document).ready(function(){
                     tr.append('<th>' + 'wiatr' + '</th>');
                     
                     jQuery('thead').append(tr);
+                    jQuery('.day').before('<h1>' + 'Weather in next days' +'</h1>');
 
                     for (var i=1; i<sevenDays.length; i++) {
                         
@@ -165,49 +167,11 @@ jQuery(document).ready(function(){
                         jQuery('.days').append(tr);
                         
                         jQuery('.days img').addClass('fifty');
-                        jQuery('.days td').addClass('align-self-center');
+                        jQuery('.days').addClass('align-self-center justify-content-center');
                     };
                 };
                 tableDays();
-                
-                
-                
-                
-                
-                
-//                tr = jQuery('<tr/>');
-//                tr.append("<th>" + (i+1) + "</th>");
-//                tr.append("<td>" + dataArray2[i].currency + "</td>");
-//                tr.append("<td>" + dataArray2[i].code + "</td>");
-//                tr.append("<td>" + dataArray2[i].mid.toFixed(3) + "</td>");
-//                // and we place whole created table row in table body:
-//                jQuery('tbody').append(tr);
-                
-                
-//                function boxWeatherDay1() {
-//                    var tableD1 = jQuery('.day1 table');
-//                    
-//                    tableD1.append('<tr>' + '<td>' + '<span>' + '<img id="icon" src="http://openweathermap.org/img/w/'+icon+'.png" />' + temp + '&deg  C' + '</span>' + '</tr>');
-//                    tableD1.append('<tr>' + '<td>' + 'wilgotność:' + '</td>' + '<td>' +humidity+ '%' + '</td>' + '</tr>');
-//                    tableD1.append('<tr>' + '<td>' + 'ciśnienie:' + '</td>' + '<td>' +pressure+ ' hPa' + '</td>' + '</tr>');
-//                    tableD1.append('<tr>' + '<td>' + 'wiatr:' + '</td>' + '<td>' +wind+ ' m/s' + '<i class="fa fa-long-arrow-up" aria-hidden="true">' + '</td>' + '</tr>');
-//                    tableD1.append('<tr>' + '<td>' + 'wschód:' + '</td>' + '<td>' +sunriseTime+ '</td>' + '</tr>');
-//                    tableD1.append('<tr>' + '<td>' + 'zachód:' + '</td>' + '<td>' +sunsetTime+ '</td>' + '</tr>');
-//                    
-//                
-//                    var arrow = jQuery('.fa-long-arrow-up');
-//                    arrow.css({ WebkitTransform: 'rotate(' + windDeg + 'deg)'})
-//                         .css('margin-left', '1em');
-//                    
-//                    jQuery('tbody tr:nth-child(1) > td:nth-child(1)').attr("colspan", 2);
-//                    
-//                    
-//                
-//                };
-//                boxWeatherDay1();
-                
-                
-                           
+             
             }).fail(function(error) {
                 alert("error");
             });
