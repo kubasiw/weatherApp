@@ -94,14 +94,18 @@ jQuery(document).ready(function(){
                     table1.append('<tr>' + '<td>' + '<span>' + '<img id="icon" src="http://openweathermap.org/img/w/'+icon+'.png" />' + temp + '&deg  C' + '</span>' + '</td>' + '</tr>');
                     table1.append('<tr>' + '<td>' + 'wilgotność:' + '</td>' + '<td>' +humidity+ '%' + '</td>' + '</tr>');
                     table1.append('<tr>' + '<td>' + 'ciśnienie:' + '</td>' + '<td>' +pressure+ ' hPa' + '</td>' + '</tr>');
-                    table1.append('<tr>' + '<td>' + 'wiatr:' + '</td>' + '<td>' +wind+ ' m/s' + '<i class="fa fa-long-arrow-up" aria-hidden="true">' + '</td>' + '</tr>');
+                    table1.append('<tr>' + '<td>' + 'wiatr:' + '</td>' + '<td>' +wind+ ' m/s' + '<i class="fa fa-long-arrow-up arrow1" aria-hidden="true">' + '</td>' + '</tr>');
                     table1.append('<tr>' + '<td>' + 'wschód:' + '</td>' + '<td>' +sunriseTime+ '</td>' + '</tr>');
                     table1.append('<tr>' + '<td>' + 'zachód:' + '</td>' + '<td>' +sunsetTime+ '</td>' + '</tr>');
                     
                 
-                    var arrow = jQuery('.fa-long-arrow-up');
-                    arrow.css({ WebkitTransform: 'rotate(' + windDeg + 'deg)'})
-                         .css('margin-left', '1em');
+                    var arrow1 = jQuery('.fa-long-arrow-up');
+                    arrow1.css({ '-webkit-transform': 'rotate(' + windDeg + 'deg)',
+                                 '-moz-transform': 'rotate(' + windDeg + 'deg)',
+                                 '-ms-transform': 'rotate(' + windDeg + 'deg)',
+                                 '-o-transform': 'rotate(' + windDeg + 'deg)',
+                                 'transform': 'rotate(' + windDeg + 'deg)',})
+                          .css('margin-left', '1em');
                     
                     jQuery('.current tr:nth-child(1) > td:nth-child(1)').attr("colspan", 2);
                     
@@ -127,64 +131,46 @@ jQuery(document).ready(function(){
                 
                 //console.log(data.list[0]);
                 
-                function whichDay() {
-                    
-                    var d = new Date();
-                    var n = d.getDay();
-                    var dayIs;
-                    
-                    if (n == 0) {
-                        dayIs = 'Niedziela';
-                    };
-                    if (n == 1) {
-                        dayIs = 'Poniedziałek';
-                    };
-                    if (n == 2) {
-                        dayIs = 'Wtorek';
-                    };
-                    if (n == 3) {
-                        dayIs = 'Środa';
-                    };
-                    if (n == 4) {
-                        dayIs = 'Czwartek';
-                    };
-                    if (n == 5) {
-                        dayIs = 'Piątek';
-                    };
-                    if (n == 6) {
-                        dayIs = 'Sobota';
-                    };
-                    
-                    console.log(dayIs);  
-                };
-                whichDay();
-                
-                function table5Days() {
-                    var fiveDays = data.list;
-                    console.log(fiveDays);
+                function tableDays() {
+                    var sevenDays = data.list;
+                    console.log(sevenDays);
                     
                     tr = jQuery('<tr/>');
                     tr.append('<th>' + 'dzień' + '</th>');
                     tr.append('<th>' + 'warunki' + '</th>');
-                    tr.append('<th>' + 'temp.(max / min)' + '</th>');
+                    tr.append('<th>' + '&deg  C (max / min)' + '</th>');
                     tr.append('<th>' + 'wilgotność' + '</th>');
                     tr.append('<th>' + 'ciśnienie' + '</th>');
                     tr.append('<th>' + 'wiatr' + '</th>');
-                    tr.append('<th>' + 'wschód / zachód' + '</th>');
                     
                     jQuery('thead').append(tr);
 
-                    for (var i=0; i<fiveDays.length; i++) {
+                    for (var i=1; i<sevenDays.length; i++) {
+                        
+                        var date = new Date(sevenDays[i].dt*1000);
+                        var day = date.getUTCDay();
+                        var week = ['Niedziela','Poniedziałek','Wtorek','Środa','Czwartek','Piątek','Sobota'];
                         
                         tr = jQuery('<tr/>');
-                        tr.append('<td>' + 'dupa' + '</td>');
-                        tr.append('<td>'+ 'max:' + ' ' + fiveDays[i].temp.max + ' ' + '/' + ' ' + 'min:' + ' ' + fiveDays[i].temp.min + '&deg  C' + '</td>');
-                        tr.append('<td>'+ 'zbita' +'</td>');
-
+                        tr.append('<td>' + week[day] + '</td>');
+                        tr.append('<td>' + '<img id="icon" src="http://openweathermap.org/img/w/'+sevenDays[i].weather[0].icon+'.png" />' + '</td>');
+                        tr.append('<td>'+ sevenDays[i].temp.max.toFixed(1) + ' / ' + ' ' + sevenDays[i].temp.min.toFixed(1) + '</td>');
+                        tr.append('<td>'+ sevenDays[i].humidity + ' %' + '</td>');
+                        tr.append('<td>'+ sevenDays[i].pressure.toFixed(0) + ' hPa' + '</td>');
+                        tr.append('<td>'+ +sevenDays[i].speed.toFixed(1) + ' m/s' + '<i class="fa fa-long-arrow-up arrow2" aria-hidden="true">' + '</td>');
+                        
+                        jQuery('.arrow2').css({ WebkitTransform: 'rotate(' + sevenDays[i].deg + 'deg)'})
+                                         .css('margin-left', '1em');
+                        
                         jQuery('.days').append(tr);
+                        
+                        jQuery('.days img').addClass('fifty');
+                        jQuery('.days td').addClass('align-self-center');
                     };
                 };
-                table5Days();
+                tableDays();
+                
+                
                 
                 
                 

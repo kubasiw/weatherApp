@@ -12,7 +12,16 @@ header {
 
 .days {
     font-size: 0.6em;
+    td {
+        padding:0.1rem;
+    }
 }
+
+.fifty {
+    width: 2.3rem;
+}
+
+
 
 footer {
     min-height:40px;
