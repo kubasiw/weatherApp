@@ -1,6 +1,6 @@
 body {
     font-family: 'Source Sans Pro', sans-serif;
-    //background-color: darkgrey;
+    background-color: #d6d6d6;
     font-size: 1.2rem;
 }
 
@@ -10,29 +10,27 @@ header {
     //background-color: chartreuse;
 }
 
-.days {
-    font-size: 0.6em;
-    td {
-        padding:0.1rem;
-    }
-}
-
 .fifty {
     width: 2.3rem;
 }
 
+.padZero {
+    padding: 0;
+}
 
-
+h1 {
+    font-size:2rem;
+}
 footer {
     min-height:40px;
-    background-color: #fece08;
+    background-color: #292b2c;
         .footerRow {
-            background-color: #fece08;
+            background-color: #292b2c;
             a {
                 text-decoration: none;
                 font-size: 0.6rem;
                 font-weight: 600;
-                color: #003f63; 
+                color: #f29515;
             }
         }
 }
