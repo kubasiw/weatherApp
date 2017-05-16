@@ -129,49 +129,7 @@ jQuery(document).ready(function(){
             }).done(function(data) {
                 
                 console.log(data);
-                
-                //console.log(data.list[0]);
-                
-//                function tableDays() {
-//                    var sevenDays = data.list;
-//                    console.log(sevenDays);
-//                    
-//                    tr = jQuery('<tr/>');
-//                    tr.append('<th>' + 'dzień' + '</th>');
-//                    tr.append('<th>' + 'warunki' + '</th>');
-//                    tr.append('<th>' + '&deg  C (max / min)' + '</th>');
-//                    tr.append('<th>' + 'wilgotność' + '</th>');
-//                    tr.append('<th>' + 'ciśnienie' + '</th>');
-//                    tr.append('<th>' + 'wiatr' + '</th>');
-//                    
-//                    jQuery('thead').append(tr);
-//                    jQuery('.day').before('<h1>' + 'Weather in next days' +'</h1>');
-//
-//                    for (var i=1; i<sevenDays.length; i++) {
-//                        
-//                        var date = new Date(sevenDays[i].dt*1000);
-//                        var dayName = date.getUTCDay();
-//                        var week = ['Niedziela','Poniedziałek','Wtorek','Środa','Czwartek','Piątek','Sobota'];
-//                        
-//                        tr = jQuery('<tr/>');
-//                        tr.append('<td>' + week[dayName] + '</td>');
-//                        tr.append('<td>' + '<img id="icon" src="http://openweathermap.org/img/w/'+sevenDays[i].weather[0].icon+'.png" />' + '</td>');
-//                        tr.append('<td>'+ sevenDays[i].temp.max.toFixed(1) + ' / ' + ' ' + sevenDays[i].temp.min.toFixed(1) + '</td>');
-//                        tr.append('<td>'+ sevenDays[i].humidity + ' %' + '</td>');
-//                        tr.append('<td>'+ sevenDays[i].pressure.toFixed(0) + ' hPa' + '</td>');
-//                        tr.append('<td>'+ +sevenDays[i].speed.toFixed(1) + ' m/s' + '<i class="fa fa-long-arrow-up arrow2" aria-hidden="true">' + '</td>');
-//                        
-//                        jQuery('.arrow2').css({ WebkitTransform: 'rotate(' + sevenDays[i].deg + 'deg)'})
-//                                         .css('margin-left', '1em');
-//                        
-//                        jQuery('.days').append(tr);
-//                        
-//                        jQuery('.days img').addClass('fifty');
-//                        jQuery('.days').addClass('align-self-center justify-content-center');
-//                    };
-//                };
-//                tableDays();
-                
+                                
                 function loopFor6days() {
 
                     for (var i=0; i<6; i++) {
@@ -187,7 +145,8 @@ jQuery(document).ready(function(){
                             tableBox = jQuery('<div/>');
                             tableBox.addClass('col-xl-2 col-lg-2 col-md-4 col-sm-4 col-6 tableBox padZero');
                             table = jQuery('<table/>');
-                            
+//                            row = jQuery('<div/>');
+//                            row.addClass('row');
 
                             table.append('<tr>'+'<td>'+ week[dayName] +'</td>'+'</tr>');
                             table.append('<tr>'+'<td>' + '<img id="icon" src="http://openweathermap.org/img/w/'+day.weather[0].icon+'.png" />' + 'max. ' + day.temp.max.toFixed(1) + '&deg  C' + ' ' + '/' + ' ' + 'min. ' + day.temp.min.toFixed(1) + '&deg  C' + '</td>'+'</tr>');
@@ -197,10 +156,10 @@ jQuery(document).ready(function(){
 
                             tableBox.append(table);
                             
-                            jQuery
+                            
                             jQuery('.test').append(tableBox);
                             jQuery('.test i').css({ WebkitTransform: 'rotate(' + day.deg + 'deg)'})
-                                              .css('margin-left', '1em');
+                                             .css('margin-left', '1em');
                         };
                         forecast();
                     };
