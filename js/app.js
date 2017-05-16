@@ -150,11 +150,11 @@ jQuery(document).ready(function(){
                     for (var i=1; i<sevenDays.length; i++) {
                         
                         var date = new Date(sevenDays[i].dt*1000);
-                        var day = date.getUTCDay();
+                        var dayName = date.getUTCDay();
                         var week = ['Niedziela','Poniedziałek','Wtorek','Środa','Czwartek','Piątek','Sobota'];
                         
                         tr = jQuery('<tr/>');
-                        tr.append('<td>' + week[day] + '</td>');
+                        tr.append('<td>' + week[dayName] + '</td>');
                         tr.append('<td>' + '<img id="icon" src="http://openweathermap.org/img/w/'+sevenDays[i].weather[0].icon+'.png" />' + '</td>');
                         tr.append('<td>'+ sevenDays[i].temp.max.toFixed(1) + ' / ' + ' ' + sevenDays[i].temp.min.toFixed(1) + '</td>');
                         tr.append('<td>'+ sevenDays[i].humidity + ' %' + '</td>');
@@ -171,6 +171,66 @@ jQuery(document).ready(function(){
                     };
                 };
                 tableDays();
+                
+                jQuery('.test').addClass('');
+                
+                for (var i=0; i<6; i++) {
+                    
+                    console.log([i]);
+                
+                    function forecastDay1() {
+                        var day = data.list[i+1];
+                        //console.log(day);
+
+                        var date = new Date(day.dt*1000);
+                        var dayName = date.getUTCDay();
+                        var week = ['Niedziela','Poniedziałek','Wtorek','Środa','Czwartek','Piątek','Sobota'];
+
+                        tableBox = jQuery('<div/>');
+                        tableBox.addClass('col-2 tableBox');
+                        table = jQuery('<table/>');
+                        table.addClass('table table-striped table-bordered tableDay1');
+
+                        table.append('<tr>'+'<td>'+ week[dayName] +'</td>'+'</tr>');
+                        table.append('<tr>'+'<td>' + '<img id="icon" src="http://openweathermap.org/img/w/'+day.weather[0].icon+'.png" />' + 'max. ' + day.temp.max.toFixed(1) + '&deg  C' + ' ' + '/' + ' ' + 'min. ' + day.temp.min.toFixed(1) + '&deg  C' + '</td>'+'</tr>');
+                        table.append('<tr>'+'<td>'+ day.humidity + ' ' + '%' + '</td>'+'</tr>');
+                        table.append('<tr>'+'<td>'+ day.pressure.toFixed(0) + ' ' + 'hPa' +'</td>'+'</tr>');
+                        table.append('<tr>'+'<td>'+ day.speed.toFixed(1) + ' m/s' + '<i class="fa fa-long-arrow-up" aria-hidden="true">' + '</td>'+'</tr>');
+
+                        tableBox.append(table);
+                        jQuery('.test').append(tableBox);
+                        jQuery('.tableDay1 i').css({ WebkitTransform: 'rotate(' + day.deg + 'deg)'})
+                                              .css('margin-left', '1em');
+                    };
+                    forecastDay1();
+                    
+                };
+                
+//                function forecastDay2() {
+//                    var day = data.list[2];
+//                    //console.log(day);
+//                    
+//                    var date = new Date(day.dt*1000);
+//                    var dayName = date.getUTCDay();
+//                    var week = ['Niedziela','Poniedziałek','Wtorek','Środa','Czwartek','Piątek','Sobota'];
+//                    
+//                    tableBox = jQuery('<div/>');
+//                    tableBox.addClass('col-2 tableBox');
+//                    table = jQuery('<table/>');
+//                    table.addClass('table table-striped table-bordered tableDay2');
+//                    
+//                    table.append('<tr>'+'<td>'+ week[dayName] +'</td>'+'</tr>');
+//                    table.append('<tr>'+'<td>' + '<img id="icon" src="http://openweathermap.org/img/w/'+day.weather[0].icon+'.png" />' + 'max. ' + day.temp.max.toFixed(1) + '&deg  C' + ' ' + '/' + ' ' + 'min. ' + day.temp.min.toFixed(1) + '&deg  C' + '</td>'+'</tr>');
+//                    table.append('<tr>'+'<td>'+ day.humidity + ' ' + '%' + '</td>'+'</tr>');
+//                    table.append('<tr>'+'<td>'+ day.pressure.toFixed(0) + ' ' + 'hPa' +'</td>'+'</tr>');
+//                    table.append('<tr>'+'<td>'+ day.speed.toFixed(1) + ' m/s' + '<i class="fa fa-long-arrow-up" aria-hidden="true">' + '</td>'+'</tr>');
+//                    
+//                    tableBox.append(table);
+//                    jQuery('.test').append(tableBox);
+//                    jQuery('.tableDay1 i').css({ WebkitTransform: 'rotate(' + day.deg + 'deg)'})
+//                                          .css('margin-left', '1em');
+//                };
+//                forecastDay2();
              
             }).fail(function(error) {
                 alert("error");
