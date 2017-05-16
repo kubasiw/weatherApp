@@ -19,7 +19,7 @@ jQuery(document).ready(function(){
             // CURRENT WEATHER
             $.ajax({
             type: 'GET',
-            url: 'http://api.openweathermap.org/data/2.5/weather?lat='+latitude +'&lon='+longitude +'&units=metric&APPID=40422780428bbcebba3ef9843cd2666a&lang=pl',
+            url: '//api.openweathermap.org/data/2.5/weather?lat='+latitude +'&lon='+longitude +'&units=metric&APPID=40422780428bbcebba3ef9843cd2666a&lang=pl',
             dataType: 'json',
 
             }).done(function(data) {
@@ -123,7 +123,7 @@ jQuery(document).ready(function(){
             // 5 DAYS FORECAST
             $.ajax({
             type: 'GET',
-            url: 'http://api.openweathermap.org/data/2.5/forecast/daily?lat='+latitude +'&lon='+longitude +'&units=metric&APPID=40422780428bbcebba3ef9843cd2666a&lang=pl',
+            url: '//api.openweathermap.org/data/2.5/forecast/daily?lat='+latitude +'&lon='+longitude +'&units=metric&APPID=40422780428bbcebba3ef9843cd2666a&lang=pl',
             dataType: 'json',
 
             }).done(function(data) {
@@ -196,6 +196,8 @@ jQuery(document).ready(function(){
                             table.append('<tr>'+'<td>'+ day.speed.toFixed(1) + ' m/s' + '<i class="fa fa-long-arrow-up" aria-hidden="true">' + '</td>'+'</tr>');
 
                             tableBox.append(table);
+                            
+                            jQuery
                             jQuery('.test').append(tableBox);
                             jQuery('.test i').css({ WebkitTransform: 'rotate(' + day.deg + 'deg)'})
                                               .css('margin-left', '1em');
